@@ -13,7 +13,7 @@
     <ul>
         <li><a href="./tesista/indexTesista.php">Gestionar Tesista</a></li>
         <li><a href="./tesis/indexTesis.php">Gestionar Tesis</a></li>
-        <li><a href="">Link del GitHub</a></li>
+        <li><a href="https://github.com/JDandy25/Examen2">Link del GitHub</a></li>
 
     </ul>
 
