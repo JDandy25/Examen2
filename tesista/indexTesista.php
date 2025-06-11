@@ -3,8 +3,22 @@
 
 require_once "../bd/Conexion.php";
 
-$sql = "select * from tesista where estado = 1 order by apellidos, nombres";
+$sql = "SELECT
+    t.apellidos AS apellidos,
+    t.nombres AS nombres,
+    t.dni AS dni,
+    tipo.escuela AS escuela,
+    t.id AS id
+
+FROM
+    tesista t
+INNER JOIN tipoescuela tipo ON
+    t.id_tipo = tipo.id
+WHERE
+    t.estado = 1";
+
 $objetocon = new Conexion();
+
 
 $con = $objetocon->getConexion();
 $resultado = $con->query($sql);
@@ -44,7 +58,7 @@ $resultado = $con->query($sql);
                 echo "<td>".$fila['apellidos']."</td>";
                 echo "<td>".$fila['nombres']."</td>";
                 echo "<td>".$fila['dni']."</td>";
-                echo "<td>".$fila['id_tipo']."</td>";
+                echo "<td>".$fila['escuela']."</td>";
                 echo "<td>";  
                 echo "<a href='editarTesista.php?id=" . $fila['id'] . "'>Editar</a> | ";
                 echo "<a href='eliminarTesista.php?id=" . $fila['id'] . "' onclick=\"return confirm('¿Está seguro de eliminar esta persona?');\">Eliminar</a>";

@@ -6,6 +6,7 @@ require_once "../bd/Conexion.php";
 $sql = "SELECT
     t.titulo AS titulo,
     l.nombre AS nombre,
+    tes.nombres AS tesista,
     t.resumen AS resumen,
     t.objetivos AS objetivos,
     t.fechaInicio AS fechaInicio,
@@ -15,6 +16,8 @@ FROM
     tesis t
 INNER JOIN lineainvestigacion l ON
     t.id_linea = l.id
+INNER JOIN tesista tes on 
+    t.id_tesista = tes.id
 WHERE
     t.estado = 1";
 
@@ -44,6 +47,7 @@ $resultado = $con->query($sql);
         <tr>
             <th>Titulo</th>
             <th>Linea de Investigacion </th>
+            <th>Tesista </th>
             <th>Resumen </th>
             <th>Objetivos</th>
             <th>Fecha Inicio</th>
@@ -58,6 +62,7 @@ $resultado = $con->query($sql);
                 echo "<tr>";
                 echo "<td>".$fila['titulo']."</td>";
                 echo "<td>".$fila['nombre']."</td>";
+                echo "<td>".$fila['tesista']."</td>";
                 echo "<td>".$fila['resumen']."</td>";
                 echo "<td>".$fila['objetivos']."</td>";
                 echo "<td>".$fila['fechaInicio']."</td>";
